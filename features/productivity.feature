@@ -18,5 +18,26 @@ Feature: Exercise productivity page
     And I enter 450 treatment minutes
     And I enter 90% productivity
     Then the time out is 5:09
-    And row 1 minutes equals 227
-    And row 2 minutes equals 273
+    And row 1 minutes is 227
+    And row 2 minutes is 273
+
+  Scenario: Calculate productivity for normal day
+    When I click the add row button 1 time
+    And in row 1, I enter time in of 8:14 and time out of 12:01
+    And in row 2, I enter time in of 12:36 and time out of 5:09
+    And I enter 450 treatment minutes
+    Then the productivity is 90.0%
+    And row 1 minutes is 227
+    And row 2 minutes is 273
+
+  Scenario: Calculate clockout for day with three entries
+    When I click the add row button 2 times
+    And in row 1, I enter time in of 9:15 and time out of 12:16
+    And in row 2, I enter time in of 12:42 and time out of 1:00
+    And in row 3, I enter time in of 2:20
+    And I enter 425 treatment minutes
+    And I enter 95% productivity
+    Then the time out is 6:28
+    And row 1 minutes is 181
+    And row 2 minutes is 18
+    And row 3 minutes is 248

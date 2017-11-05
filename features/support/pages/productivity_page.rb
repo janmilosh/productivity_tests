@@ -74,6 +74,11 @@ class ProductivityPage
     "#{hour}:#{min}"
   end
 
+  def get_percent_productivity
+    get_productivity
+    productivity_element.value
+  end
+
   def entry_minutes_for(row)
     entry_minutes_elements[row - 1].inner_html.to_i
   end
