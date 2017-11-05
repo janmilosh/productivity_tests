@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'pry'
 gem 'cucumber'
 gem 'rspec'
 gem 'rake'
