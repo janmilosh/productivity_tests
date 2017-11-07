@@ -51,3 +51,23 @@ Then (/^row (\d+) minutes is (\d+)$/) do |row, min|
     expect(page.entry_minutes_for row).to eq min
   end
 end
+
+Then (/^Tx minutes is invalid$/) do
+  on(ProductivityPage) do |page|
+    expect(page.tx_minutes_invalid?).to eq true
+  end
+end
+
+Then (/^Productivity is invalid$/) do
+  on(ProductivityPage) do |page|
+    expect(page.productivity_invalid?).to eq true
+  end
+end
+
+Then (/^I click Productivity$/) do
+  on(ProductivityPage).get_productivity
+end
+
+Then (/^I click Clock Out$/) do
+  on(ProductivityPage).get_clock_out
+end

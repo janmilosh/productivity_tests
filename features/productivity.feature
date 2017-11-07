@@ -41,3 +41,14 @@ Feature: Exercise productivity page
     And row 1 minutes is 181
     And row 2 minutes is 18
     And row 3 minutes is 248
+
+  Scenario: Invalid Tx minutes
+    When in row 1, I enter time in of 12:35 and time out of 1:01
+    And I click Productivity
+    Then Tx minutes is invalid
+
+  Scenario: Invalid productivity and Tx minutes
+    When in row 1, I enter time in of 9:14
+    And I click Clock Out
+    Then Tx minutes is invalid
+    And Productivity is invalid

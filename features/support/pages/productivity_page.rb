@@ -5,6 +5,8 @@ class ProductivityPage
 
   rows(:entry, class: 'entry')
   elements(:entry_minutes, css: 'td.minutes')
+  row(:tx_minutes_row, class: 'tx-minutes')
+  row(:productivity_row, class: 'productivity')
 
   text_field(:tx_minutes, id: 'tx-minutes')
   text_field(:productivity, id: 'productivity')
@@ -81,5 +83,13 @@ class ProductivityPage
 
   def entry_minutes_for(row)
     entry_minutes_elements[row - 1].inner_html.to_i
+  end
+
+  def tx_minutes_invalid?
+    tx_minutes_row_element.attribute('class').include? 'invalid'
+  end
+
+  def productivity_invalid?
+    productivity_row_element.attribute('class').include? 'invalid'
   end
 end
